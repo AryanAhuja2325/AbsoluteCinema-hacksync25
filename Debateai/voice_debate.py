@@ -51,7 +51,12 @@ class DebateAI:
             'excited': {'stability': 0.6, 'similarity_boost': 0.7, 'style': 0.8, 'speed': 1.2},
             'calm': {'stability': 0.8, 'similarity_boost': 0.9, 'style': 0.3, 'speed': 0.9},
             'assertive': {'stability': 0.6, 'similarity_boost': 0.7, 'style': 0.7, 'speed': 1.1},
-            'thoughtful': {'stability': 0.9, 'similarity_boost': 0.8, 'style': 0.4, 'speed': 0.95}
+            'thoughtful': {'stability': 0.9, 'similarity_boost': 0.8, 'style': 0.4, 'speed': 0.95},
+            'confident': {'stability': 0.65, 'similarity_boost': 0.85, 'style': 0.6, 'speed': 1.05},
+            'angry': {'stability': 0.5, 'similarity_boost': 0.6, 'style': 0.9, 'speed': 1.15},
+            'hopeful': {'stability': 0.75, 'similarity_boost': 0.8, 'style': 0.55, 'speed': 1.0},
+            'skeptical': {'stability': 0.7, 'similarity_boost': 0.75, 'style': 0.6, 'speed': 0.95},
+            'curious': {'stability': 0.8, 'similarity_boost': 0.7, 'style': 0.5, 'speed': 1.05}
         }
 
     def setup_environment(self):
@@ -97,11 +102,16 @@ class DebateAI:
 
     def get_response_prompt(self, text, emotion):
         prompts = {
+            'neutral': "Respond clearly and concisely to:",
             'excited': "Respond enthusiastically but concisely to the counterargument:",
             'calm': "Provide a measured, brief response to:",
             'assertive': "Give a confident, direct counter to:",
             'thoughtful': "Share a brief, reflective perspective on:",
-            'neutral': "Respond clearly and concisely to:"
+            'confident': "Offer a bold, assured rebuttal to:",
+            'angry': "Counter sharply and forcefully to:",
+            'hopeful': "Present an optimistic, concise counterpoint to:",
+            'skeptical': "Question the argument with a brief, doubtful response to:",
+            'curious': "Explore the argument with a concise, inquisitive reply to:"
         }
         return f"{prompts[emotion]} {text[:200]}"
 
